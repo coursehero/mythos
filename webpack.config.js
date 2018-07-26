@@ -2,7 +2,7 @@ const path = require('path')
 
 const isDevServer = path.basename(require.main.filename) === 'webpack-dev-server.js'
 
-module.exports = {
+module.exports = (env, argv) => ({
   mode: isDevServer ? 'development' : 'production',
   entry: {
     MythosApp: './src/mythos-app/index.jsx',
@@ -13,7 +13,7 @@ module.exports = {
     filename: isDevServer ? '[name].js' : '[name].[chunkhash].js'
   },
   devtool: 'source-map',
-  externals: {
+  externals: argv.outputLibraryTarget ? {} : {
     react: 'React',
     'react-dom': 'ReactDOM'
   },
@@ -30,4 +30,4 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx']
   }
-}
+})
