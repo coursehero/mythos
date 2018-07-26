@@ -3,8 +3,10 @@ const path = require('path')
 const isDevServer = path.basename(require.main.filename) === 'webpack-dev-server.js'
 
 module.exports = {
+  mode: isDevServer ? 'development' : 'production',
   entry: {
-    manifest: './src/component-manifest.js'
+    MythosApp: './src/mythos-app/index.jsx',
+    Greeting: './src/greeting.jsx'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -13,8 +15,7 @@ module.exports = {
   devtool: 'source-map',
   externals: {
     react: 'React',
-    'react-dom': 'ReactDOM',
-    'react-addons-css-transition-group': 'React.addons.CSSTransitionGroup'
+    'react-dom': 'ReactDOM'
   },
   module: {
     rules: [
