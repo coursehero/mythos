@@ -1,24 +1,25 @@
 {
-  "name": "mythos",
-  "version": "1",
+  "name": "@coursehero/mythos",
   "repository": "https://git.coursehero.com/coursehero/components/mythos.git",
   "author": "Connor Clark <connor.clark@coursehero.com>",
   "license": "MIT",
   "dependencies": {
-    "@babel/core": "^7.0.0-beta.35",
-    "@babel/preset-env": "^7.0.0-beta.35",
-    "babel-loader": "8.0.0-beta.0",
+    "@babel/core": "^7.0.0-beta.54",
+    "@babel/preset-react": "^7.0.0-beta.54",
+    "babel-loader": "^8.0.0-beta",
+    "react": "^16.2",
+    "react-dom": "^16.2",
     "react-modal": "^3.5.1",
-    "webpack": "^3.10.0"
+    "rimraf": "^2.6.2",
+    "webpack": "^4.16.2",
+    "webpack-cli": "^3.1.0"
   },
   "devDependencies": {
-    "@babel/preset-react": "^7.0.0-beta.35",
-    "rimraf": "^2.6.2",
-    "standard": "^10.0.3",
-    "webpack-dev-server": "^2.9.7"
+    "webpack-dev-server": "^3.1.5"
   },
   "scripts": {
-    "lint": "standard --fix src/**/*.js src/**/*.jsx",
-    "build": "rimraf dist && mkdir dist && webpack --json > dist/stats.json"
+    "build": "rimraf dist && mkdir dist && yarn build-browser && yarn build-node",
+    "build-browser": "webpack --json --output-library-target window > dist/stats-browser.json",
+    "build-node": "webpack --json --output-library-target commonjs2 > dist/stats-node.json"
   }
 }
