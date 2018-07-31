@@ -12,7 +12,7 @@ module.exports = (env, argv) => ({
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: isDevServer ? '[name].js' : '[name].[chunkhash].js',
-    library: ['ComponentLibraries', '@coursehero/mythos'],
+    library: ['ComponentLibraries', '@coursehero/mythos', '[name]'],
   },
   devtool: 'source-map',
   externals: argv.outputLibraryTarget ? {} : {
