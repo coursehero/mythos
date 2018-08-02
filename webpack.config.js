@@ -14,11 +14,20 @@ module.exports = (env, argv) => ({
     filename: isDevServer ? '[name].js' : '[name].[chunkhash].js',
     library: ['ComponentLibraries', '@coursehero/mythos', '[name]'],
   },
+  devServer: {
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    },
+    inline: true,
+    port: 8081,
+    https: true,
+    hot: true
+  },
   devtool: 'source-map',
-  externals: argv.outputLibraryTarget ? {} : {
+  externals: argv.outputLibraryTarget === 'window' ? {
     react: 'React',
     'react-dom': 'ReactDOM'
-  },
+  } : {},
   module: {
     rules: [
       {
