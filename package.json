@@ -20,6 +20,7 @@
   "scripts": {
     "build": "rimraf dist && mkdir dist && yarn build-browser && yarn build-node",
     "build-browser": "webpack --json --output-library-target window > dist/stats-browser.json",
-    "build-node": "webpack --json --output-library-target commonjs2 > dist/stats-node.json"
+    "build-node": "webpack --json --output-library-target commonjs2 > dist/stats-node.json",
+    "dev-server": "webpack-dev-server --hot"
   }
 }
