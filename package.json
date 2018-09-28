@@ -1,8 +1,8 @@
 {
   "name": "@coursehero/mythos",
-  "repository": "https://git.coursehero.com/coursehero/components/mythos.git",
+  "repository": "https://github.com/coursehero/mythos.git",
   "author": "Connor Clark <connor.clark@coursehero.com>",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "dependencies": {
     "@types/node": "^10.5.3",
     "@types/react": "^16.3.11",
@@ -12,7 +12,7 @@
     "rimraf": "^2.6.2",
     "ts-loader": "^5.2.1",
     "typescript": "^3.1.1",
-    "webpack": "^4.20.2",
+    "webpack": "4.16.2",
     "webpack-cli": "^3.1.1"
   },
   "devDependencies": {
