@@ -1,18 +1,19 @@
 const webpack = require('webpack')
 const path = require('path')
 
+const CL = '@coursehero/mythos'
 const isDevServer = path.basename(require.main.filename) === 'webpack-dev-server.js'
 
 module.exports = (env, argv) => ({
   mode: isDevServer ? 'development' : 'production',
   entry: {
-    MythosApp: './src/mythos-app/index.jsx',
-    Greeting: './src/greeting.jsx'
+    MythosApp: 'mythos-app/index.tsx',
+    Greeting: 'greeting.tsx'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: isDevServer ? '[name].js' : '[name].[chunkhash].js',
-    library: ['ComponentLibraries', '@coursehero/mythos', '[name]'],
+    library: ['ComponentLibraries', CL, '[name]'],
   },
   devServer: {
     headers: {
@@ -31,18 +32,22 @@ module.exports = (env, argv) => ({
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        use: {
-          loader: 'babel-loader'
+        test: /\.tsx?$/,
+        include: path.resolve(__dirname, 'src'),
+        loader: 'ts-loader',
+        options: {
+          onlyCompileBundledFiles: true
         }
       }
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    modules: [path.resolve(__dirname, 'src'), 'node_modules']
   },
   plugins: [
     new webpack.DefinePlugin({
+      CL: JSON.stringify(CL),
       CL_VERSION: JSON.stringify(require('child_process').execSync('git rev-parse HEAD').toString().trim())
     })
   ]
