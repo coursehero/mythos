@@ -17,5 +17,5 @@ const CL = '@my/cl-name'
 const render = (MyApp) => {
   ReactDOM.hydrate(<MyApp {...window.__PROPS__} />, document.getElementById('app'))
 }
-window.ComponentLibraries[CL].MythosApp.HotReload = render
+window.ComponentLibraries[CL].MyApp.HotReload = render
 ```
