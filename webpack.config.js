@@ -7,8 +7,8 @@ const isDevServer = path.basename(require.main.filename) === 'webpack-dev-server
 module.exports = (env, argv) => ({
   mode: isDevServer ? 'development' : 'production',
   entry: {
-    MythosApp: 'mythos-app/index.tsx',
-    Greeting: 'greeting.tsx'
+    MythosApp: 'MythosApp.tsx',
+    Greeting: 'Greeting.tsx'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

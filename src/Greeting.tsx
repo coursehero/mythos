@@ -1,5 +1,5 @@
 import * as React from 'react'
-import 'register'
+import 'Register'
 
 const Greeting = ({name}) => (
   <div>
